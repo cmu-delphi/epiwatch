@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button, Stack, Paper, Typography, Divider } from '@mui/material';
 import { LocationField, type County } from './LocationField';
 import { PathogenSelect, type Pathogen } from './PathogenSelect';
+import { API_BASE_URL } from '../../config';
 
 
 type Indicator = {
@@ -32,7 +33,7 @@ export function ControlsPanel() {
         setError(null);
         try {
             const response = await fetch(
-                `/available-indicators/?${params}`
+                `${API_BASE_URL}/available-indicators/?${params}`
             );
             if (!response.ok) {
                 throw new Error(`Request failed: ${response.status}`);

@@ -1,0 +1,23 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Proxy API calls through the Netlify origin to avoid browser CORS.
+# These mirror the Vite dev proxy in vite.config.ts.
+[[redirects]]
+  from = "/rest/*"
+  to = "https://staging.delphi.cmu.edu/epiportal/rest/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/available-indicators/*"
+  to = "https://staging.delphi.cmu.edu/epiportal/available-indicators/:splat"
+  status = 200
+  force = true
+
+# SPA fallback: serve index.html for client-side routes.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

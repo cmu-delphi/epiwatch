@@ -1,7 +1,8 @@
 import {useState, useEffect} from 'react';
 import {Autocomplete, TextField, CircularProgress} from '@mui/material';
+import {API_BASE_URL} from '../../config';
 
-const PATHOGENS_URL = '/rest/pathogens/?limit=1000';
+const PATHOGENS_URL = `${API_BASE_URL}/rest/pathogens/?limit=1000`;
 
 export type Pathogen = {
     name: string;
